@@ -1,0 +1,101 @@
+<!--
+ * @Author: your name
+ * @Date: 2021-05-09 15:25:48
+ * @LastEditTime: 2021-05-09 16:10:26
+ * @LastEditors: Please set LastEditors
+ * @Description: In User Settings Edit
+ * @FilePath: \undefinedf:\a WebStorm\client\GitHub\1148716206.github.io\task3.html
+-->
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="utf-8" />
+	<title>让坦克开起来</title>
+	<style type="text/css">
+		input {
+			font-size: 26px;
+			margin-top: 20px;
+		}
+
+		body {
+			background-image: url(assets/images/grassland.png);
+		}
+
+		#myTank {
+			position: absolute;
+			left: 10px;
+			top: 100px
+		}
+	</style>
+</head>
+
+<body>
+	<img id="myTank" src="assets/images/right.png" />
+	<script>
+		// 编写代码，让坦克能上下左右移动
+		//189000556 程卓
+		window.document.oncontextmenu = function () {
+			return false        //禁用鼠标右键
+		}
+
+		let tank = document.getElementById('myTank');
+		let speed = 20;
+		let left = false;
+		let right = false;
+		let up = false;
+		let down = false;
+
+		setInterval(function () {
+			if (left) {
+				tank.src = 'assets/images/left.png'
+				tank.style.left = tank.offsetLeft - speed + "px";
+			} else if (right) {
+				tank.src = 'assets/images/right.png'
+				tank.style.left = tank.offsetLeft + speed + "px";
+			} else if (up) {
+				tank.src = 'assets/images/up.png'
+				tank.style.top = tank.offsetTop - speed + "px";
+			} else if (down) {
+				tank.src = 'assets/images/down.png'
+				tank.style.top = tank.offsetTop + speed + "px";
+			}
+		}, 50)
+
+		document.onkeydown = function (e) {
+			switch (e.keyCode) {
+				case 65:
+					left = true;
+					break;
+				case 68:
+					right = true;
+					break;
+				case 83:
+					down = true;
+					break;
+				case 87:
+					up = true;
+					break;
+			}
+		}
+
+		document.onkeyup = function (e) {
+			switch (e.keyCode) {
+				case 65:
+					left = false;
+					break;
+				case 68:
+					right = false;
+					break;
+				case 83:
+					down = false;
+					break;
+				case 87:
+					up = false;
+					break;
+			}
+		}
+	</script>
+</body>
+
+</html>
