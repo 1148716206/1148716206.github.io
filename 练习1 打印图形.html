@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>练习一 打印图形</title>
+</head>
+<body>
+
+<script>
+	//99乘法表  189000556 程卓
+	function table(){
+		let str='';
+		for(let i = 1; i < 10; i++){
+			for(let j = 1; j <= i; j++){
+				str += j + '×' + i+ '=' + i * j + '\t';
+			}
+			str += '\n';
+		}
+		return str;
+	}
+
+	console.log(table());
+
+	//三角形  189000556 程卓
+	function triangle(line){
+		for (let a = 1; a < line + 1; a++){
+		//以最后一排贴边
+			for (let b = 1; b < line + 1 - a; b++){
+				document.write("&emsp;");
+			}
+			//打印星星
+			for (let c = 1; c <= a; c++){
+				document.write("* &emsp;&nbsp")
+			}
+			document.write("<br>")
+
+		}
+
+	}
+	triangle(5)
+
+
+
+
+	//平行四边形  189000556 程卓
+	function parallelogram(line) {
+		for (let a = 0; a < line; a++) {
+			//以最后一排第一个贴边，每行起始间隔
+			for (let b = a; b < line - 1; b++) {
+				document.write("&nbsp;&nbsp;");
+			}
+			//打印星星
+			for ( let c = 1; c <= line; c++) {
+				document.write("&nbsp;&nbsp;&nbsp;" + "*")
+			}
+			document.write("<br>")
+		}
+	}
+	parallelogram(5);
+
+
+
+
+	//菱形  189000556 程卓
+	function diamond(line) {
+		let n = line / 2 + 1;
+		//行
+		for(let i = 1; i <= n; i++){
+			//打印间隔
+			for(let k = n-1; k >= i; k--){
+				document.write("&nbsp;&nbsp;&nbsp;&nbsp;");
+			}
+			//打印星星
+			for(let j = 1; j <= 2 * i - 1; j++){
+				document.write("&nbsp;&nbsp;" + "*");
+			}
+			document.write("<br/>");
+		}
+		//下半部分
+		for(let i = n - 1; i >= 1; i--) {
+			for(let k = i; k <= n-1; k++) {
+				document.write("&nbsp;&nbsp;&nbsp;&nbsp;");
+			}
+			for(let j = 1; j < 2 * i - 1; j++) {
+				document.write("&nbsp;&nbsp;" + "*" );
+			}
+			document.write("<br/>");
+		}
+	}
+
+	diamond(5)
+
+</script>
+
+</body>
+</html>

@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>实验1 函数应用</title>
+</head>
+<body>
+<script>
+	//1. 189000556 程卓
+	function getSum(num1, num2){
+		var num = num1 + num2;
+		console.log(num1+ '+' + num2 + '=' +(num1 + num2))
+	}
+	getSum(5,5)
+
+	//2. 189000556 程卓
+	var getProduct = function(num1, num2) {
+		console.log(num1 + '*' + num2 + '=' + num1 * num2)
+	}
+	getProduct(2,4);
+
+	//3. 189000556 程卓
+	var a = 100;
+	function test(){
+		console.log(a);
+		a = 10;
+		console.log(a)
+	}
+	test();
+	console.log(a)
+
+	//4. 189000556 程卓
+	var a = 10;
+	fun1();
+	function fun1(){
+		var b =20;
+		console.log(a)
+		console.log(b)
+		var a = 30
+	}
+
+
+	//5. 189000556 程卓
+	function fun2(a,b) {
+		console.log(arguments[0])
+		console.log(arguments[1])
+		console.log(arguments[2])
+
+	}
+	fun2(1,2,3)
+	//6. 189000556 程卓
+	for(const i in fun2(1,2,3)){
+		console.log(i)
+	}
+
+	//7. 189000556 程卓
+	'use strict'
+	try{
+		function a(){
+			var color = 'blue';
+			console.log(color);
+		}
+		//严格模式下 需要用 var let const关键字来定义变量
+		color = 'green';
+		a()
+	}catch(err){
+		console.log('error',err)
+	}
+
+
+
+
+
+
+
+
+</script>
+
+</body>
+</html>

@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>实验3 对象化编程</title>
+</head>
+<body>
+
+<script>
+	//1. 字面量创建对象  189000556 程卓
+	var obj1 = {
+		name: '刘备',
+		sex: '男',
+		run: function() {
+			console.log('跑')
+		}
+	}
+
+	console.log('第 1 题：', obj1)
+
+
+	//2. 将步骤1的代码改为使用Object方式创建 189000556 程卓
+	function Obj2() {
+		return {
+			name: '刘备',
+			sex: '男',
+			run: function() {
+				console.log('跑')
+			}
+		}
+	}
+
+	var obj2 = new Obj2();
+	console.log('第 2 题：',obj2)
+
+
+	//3. 将步骤1的代码改为使用工厂模式创建 189000556 程卓
+	function createObj(name, sex) {
+		var obj = {};               //封装一个函数，里面创建一个对象，把对象作为返回值
+		obj.name = name;
+		obj.sex = sex;
+		obj.run = function() {
+			console.log('跑')
+		}
+		return obj
+	}
+
+	var obj3 = createObj('刘备','男');
+	console.log('第 3 题:',obj3);
+
+
+	//4. 构造函数创建对象 189000556 程卓
+	function Student(name, sex) {
+		this.name = name;
+		this.sex = sex;
+		this.run = function() {
+			console.log(this.name + '跑')
+		}
+	}
+
+	var obj4 = new Student('刘备','男');  //构造函数，创建实例用new方法，传参
+	console.log('第 4 题：', obj4)
+
+
+	//5. 原型模式创建对象 189000556 程卓
+	function Person() {                     //写在构造函数的原型上面
+		Person.prototype.name = '刘备';
+		Person.prototype.sex = '男';
+		Person.prototype.run = function() {
+			console.log(this.name + '男')
+		};
+	}
+
+	var obj5 = new Person();
+	console.log('第 5 题：', obj5);
+	obj5.run();
+	console.log('----------------------------')
+
+
+	//6.this指向谁 189000556 程卓
+	function fun() {
+		console.log(this)           //window   全局调用this指向window
+	}
+
+	console.log('第 6 题')
+	fun();
+	console.log('----------------------------')
+
+
+	//7.写出一个Dog继承Animal的例子 189000556 程卓
+	function Animal(name) {
+		this.name = name;
+	}
+
+	function Dog(name) {
+		Animal.call(this,name);             //call()改变this指向，当前this指向Animal
+	}
+
+	var obj7 = new Dog('二哈')
+	console.log('第 7 题',obj7)
+
+
+	//8.如何实现继承的 189000556 程卓
+	function Person8(name) {
+		this.name = name
+	}
+
+	Person8.prototype.run = function() {
+		console.log('跑')
+	}
+
+	function Worker(name, salary) {
+		Person8.call(this, name);                  //call() 改变this指向，调用后this指向Worker
+		this.salary = salary;
+	}
+
+	Worker.prototype = new Person8();       //子类原型作为父类的实例，继承父类构造函数的方法和原型上的方法
+	var obj8 = new Worker('赵云',100)
+	console.log('第 8 题',obj8)
+
+
+	//9.原型式继承 189000556 程卓
+	var person4 = {                                 //子类实例不能向父类传参
+		name: '刘备',
+		sex: '男',
+		run: function() {
+			console.log('跑')
+		}
+	}
+
+	var person5 = Object.create(person4);           //person5.__proto__ === person4
+	console.log('第 9 题',person5)        //person5为空对象
+
+
+
+	//10.是什么方式实现继承的 189000556 程卓
+	function inheritPrototype(sFun, pFun) {
+		var myPrototype = new Object(pFun.prototype);  //创建对象
+		myPrototype.constructor = sFun;         //增强对象，添加constructor
+		sFun.prototype = myPrototype            //将创建的副本赋值给子类的原型
+	}
+
+	function Person2(name) {
+		this.name = name
+	}
+
+	Person2.prototype.run = function() {
+		console.log('跑')
+	}
+
+	function Worker2(name, salary) {
+		Person.call(this, name);
+		this.salary = salary
+	}
+
+	inheritPrototype(Worker, Person);
+	var worker1 = new Worker2('赵云',100);
+	console.log('第 10 题',worker1)
+
+</script>
+
+</body>
+</html>

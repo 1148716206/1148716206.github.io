@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<link rel="stylesheet" href="font-awesome/css/font-awesome.min.css">
+		<link rel="stylesheet" href="css/menu1.css" />
+		<title>练习02 实现菜单的收缩与扩展</title>
+	</head>
+
+	<body>
+		<div id="leftNav" class="left-nav">
+			<div id="myMenu" class="menuBox">
+				<ul class="spMenuBox" >
+					<li class="spMenuItem">
+						<div class="spMenu">
+							<i class="fa fa-folder"></i>
+							<span>菜单1</span>
+							<i class="fa fa-2x fa-angle-down"></i>
+						</div>
+						<ul class="subMenuBox" style="display: none;">
+							<li><span class="subMenu">菜单1.1</span></li>
+							<li><span class="subMenu">菜单1.2</span></li>
+							<li><span class="subMenu">菜单1.3</span></li>
+						</ul>
+					</li>
+					<li class="spMenuItem">
+						<div class="spMenu">
+							<i class="fa fa-folder"></i>
+							<span>菜单2</span>
+							<i class="fa fa-2x fa-angle-down"></i>
+						</div>
+						<ul class="subMenuBox" style="display: none;">
+							<li><span class="subMenu">菜单2.1</span></li>
+							<li><span class="subMenu">菜单2.2</span></li>
+							<li><span class="subMenu">菜单2.3</span></li>
+							<li><span class="subMenu">菜单2.1</span></li>
+							<li><span class="subMenu">菜单2.2</span></li>
+							<li><span class="subMenu">菜单2.3</span></li>
+						</ul>
+					</li>
+					<li class="spMenuItem">
+						<div class="spMenu">
+							<i class="fa fa-folder"></i>
+							<span>菜单3</span>
+							<i class="fa fa-2x fa-angle-down"></i>
+						</div>
+						<ul class="subMenuBox" style="display: none;">
+							<li><span class="subMenu">菜单3.1</span></li>
+							<li><span class="subMenu">菜单3.2</span></li>
+							<li><span class="subMenu">菜单3.3</span></li>
+							<li><span class="subMenu">菜单3.1</span></li>
+							<li><span class="subMenu">菜单3.2</span></li>
+							<li><span class="subMenu">菜单3.3</span></li>
+							<li><span class="subMenu">菜单3.1</span></li>
+							<li><span class="subMenu">菜单3.2</span></li>
+							<li><span class="subMenu">菜单3.3</span></li>
+						</ul>
+					</li>
+					<li class="spMenuItem">
+						<div class="spMenu">
+							<i class="fa fa-folder"></i>
+							<span>菜单4</span>
+							<i class="fa fa-2x fa-angle-down"></i>
+						</div>
+						<ul class="subMenuBox" style="display: none;">
+							<li><span class="subMenu">菜单4.1</span></li>
+							<li><span class="subMenu">菜单4.2</span></li>
+							<li><span class="subMenu">菜单4.3</span></li>
+						</ul>
+					</li>
+					<li class="spMenuItem">
+						<div class="spMenu">
+							<i class="fa fa-folder"></i>
+							<span>菜单5</span>
+							<i class="fa fa-2x fa-angle-down"></i>
+						</div>
+						<ul class="subMenuBox" style="display: none;">
+							<li><span class="subMenu">菜单5.1</span></li>
+							<li><span class="subMenu">菜单5.2</span></li>
+							<li><span class="subMenu">菜单5.3</span></li>
+							<li><span class="subMenu">菜单5.1</span></li>
+							<li><span class="subMenu">菜单5.2</span></li>
+							<li><span class="subMenu">菜单5.3</span></li>
+						</ul>
+					</li>
+				</ul>
+			</div>
+		</div>
+	</body>
+	<script>
+		//189000556 程卓
+		var spMenu = document.querySelectorAll(".spMenu");    //每个菜单栏（标题）
+		var spMenuItem = document.querySelectorAll(".spMenuItem");   //每个菜单栏（标题和子菜单）
+		var subMenuBox = document.querySelectorAll('.subMenuBox');  //子菜单
+		var img1 = document.querySelectorAll(".fa-folder");     //文件夹
+		for (let i = 0; i <= spMenu.length; i++) {   //5
+			spMenu[i].addEventListener('click', function() {  //设置监听（点击事件）
+				// console.log(spMenu[i])
+				if (subMenuBox[i].style.display === "block") { //若菜单栏展开
+					// console.log(subMenuBox[i])
+					subMenuBox[i].setAttribute('style', "display: none");   // ul隐藏
+					spMenuItem[i].className = 'spMenuItem';//  箭头向下 取消类名active
+					img1[i].className =  'fa  fa-folder';  //文件夹图标闭合
+
+				} else {                                             //若菜单栏隐藏 点击后
+					subMenuBox[i].setAttribute('style', "display: block")   //ul展开
+					// console.log(subMenuBox[i])
+					spMenuItem[i].className = "spMenuItem active" //箭头向上 增加类名 active
+					img1[i].className = ' fa fa-folder-open' ; //文件夹图标 显示打开
+					// console.log(subMenuBox[i])
+				}
+			})
+		}
+
+	</script>
+
+</html>
